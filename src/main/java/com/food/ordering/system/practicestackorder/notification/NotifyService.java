@@ -23,14 +23,12 @@ public class NotifyService {
 
     @KafkaListener(topics = "payment-success", groupId = "payment-group")
     public void sendNotification(String message){
-        //TODO : send notification
         try {
             log.info("Yeah! Payment success: {}", message);
             String orderId = parseMessage(message);
             Notify notify = Notify.ofSuccess(orderId, LocalDateTime.now(ZoneId.of("Asia/Seoul")));
             mongoTemplate.save(notify, "notification");
 
-            // TODO : send Notify By Subscribe User
 
             log.info("send Notify By Subscribe Users");
         }catch (Exception e){

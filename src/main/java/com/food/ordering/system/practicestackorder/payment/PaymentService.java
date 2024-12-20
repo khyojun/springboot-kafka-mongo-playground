@@ -24,7 +24,6 @@ public class PaymentService {
     public void savePayment(String message){
         log.info("Payment event consumed: {}", message);
         Payment payment = parseMessage(message);
-        //TODO : save to mongo db
         mongoTemplate.save(payment, "payment");
 
         kafkaTemplate.send("payment-success", payment);
