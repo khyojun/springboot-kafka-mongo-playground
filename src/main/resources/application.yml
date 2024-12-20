@@ -1,0 +1,16 @@
+spring.data.mongodb:
+  database: practice
+  field-naming-strategy: org.springframework.data.mapping.model.SnakeCaseFieldNamingStrategy
+  username: root
+  password: '1234'
+  authentication-database: admin
+
+
+
+spring.kafka:
+  producer:
+    value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  consumer:
+    value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+    auto-offset-reset: earliest 
+
